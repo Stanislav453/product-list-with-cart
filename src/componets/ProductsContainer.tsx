@@ -12,11 +12,9 @@ type ProductsContainerProps = {
 };
 
 export default function ProductsContainer({
+  productsInCard,
   setProductsInCard,
 }: ProductsContainerProps) {
-  const [data, setData] = useState<dataType[]>(localData);
-  const [isActive, setIsActive] = useState(false);
-
   const handleSetCardData = (data: DataType) => {
     const newProduct = {
       ...data,
@@ -28,27 +26,56 @@ export default function ProductsContainer({
     ]);
   };
 
+  const productName = productsInCard?.map((item) => item.name);
+
+  console.log(productName);
+
+  const handleCount = (productName: string, value: number) => {
+    setProductsInCard((prevState) =>
+      prevState.map((oneProduct) =>
+        oneProduct.name === productName
+          ? { ...oneProduct, count: oneProduct.count + value }
+          : oneProduct
+      )
+    );
+  };
+
   return (
     <article className="w-full max-w-screen-lg">
       <h1 className="pb-2 text-[2rem] font-bold capitalize text-darkRedColor">
         desserts
       </h1>
       <ul className="grid grid-cols-3 gap-8">
-        {data.map((oneProduct, index) => {
+        {localData.map((oneProduct, index) => {
           const { name, category, price } = oneProduct;
           const { desktop } = oneProduct.image;
+
           const totalPrice = price.toFixed(2);
+          const isInCard = productName.includes(name);
+
+          const actualProduct = productsInCard.find(
+            (product) => product.name === name
+          );
+
           return (
             <li className="flex flex-col gap-8" key={index}>
               <div className="relative flex justify-center items-end">
                 <img src={desktop} alt="product" className="rounded-2xl" />
-                {isActive ? (
+                {isInCard ? (
                   <div className="absolute bottom-[-23px] flex justify-between items-center gap-2 w-full max-w-44  px-6 py-3 text-darkRedColor  bg-redFontColor  rounded-full transition-colors">
-                    <button className="flex justify-center items-center w-5 h-5 border-[1px] border-white rounded-full">
+                    <button
+                      onClick={() => handleCount(name, 1)}
+                      className="flex justify-center items-center w-5 h-5 border-[1px] border-white rounded-full"
+                    >
                       <img src={increment} alt="increment" />
                     </button>
-                    <span className="text-white">1</span>
-                    <button className=" flex justify-center items-center w-5 h-5 border-[1px] border-white rounded-full hover:filter hover:bg-white ">
+                    <span className="text-white thisiscount">
+                      {actualProduct?.count}
+                    </span>
+                    <button
+                      onClick={() => handleCount(name, -1)}
+                      className=" flex justify-center items-center w-5 h-5 border-[1px] border-white rounded-full hover:filter hover:bg-white "
+                    >
                       <img
                         className="invert-[0] sepia-100 saturate-[0] hue-rotate-[21deg] brightness-[.97] contrast-[1.03]"
                         src={decrement}
