@@ -5,6 +5,7 @@ import addCart from "../../public/assets/images/icon-add-to-cart.svg";
 import increment from "../../public/assets/images/icon-increment-quantity.svg";
 import decrement from "../../public/assets/images/icon-decrement-quantity.svg";
 import { type DataType, NewProductType } from "../type";
+import OneProduct from "./OneProduct";
 
 type ProductsContainerProps = {
   productsInCard: NewProductType[];
@@ -32,11 +33,13 @@ export default function ProductsContainer({
 
   const handleCount = (productName: string, value: number) => {
     setProductsInCard((prevState) =>
-      prevState.map((oneProduct) =>
-        oneProduct.name === productName
-          ? { ...oneProduct, count: oneProduct.count + value }
-          : oneProduct
-      )
+      prevState
+        .map((oneProduct) =>
+          oneProduct.name === productName
+            ? { ...oneProduct, count: oneProduct.count + value }
+            : oneProduct
+        )
+        .filter((oneProduct) => oneProduct.count > 0)
     );
   };
 
@@ -45,7 +48,7 @@ export default function ProductsContainer({
       <h1 className="pb-2 text-[2rem] font-bold capitalize text-darkRedColor">
         desserts
       </h1>
-      <ul className="grid grid-cols-3 gap-8">
+      <ul className="flex flex-wrap gap-8">
         {localData.map((oneProduct, index) => {
           const { name, category, price } = oneProduct;
           const { desktop } = oneProduct.image;
@@ -58,7 +61,7 @@ export default function ProductsContainer({
           );
 
           return (
-            <li className="flex flex-col gap-8" key={index}>
+            <li className="max-w-[315px] flex flex-col gap-8" key={index}>
               <div className="relative flex justify-center items-end">
                 <img src={desktop} alt="product" className="rounded-2xl" />
                 {isInCard ? (
