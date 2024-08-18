@@ -1,6 +1,8 @@
 import removeIcon from "../../public/assets/images/icon-remove-item.svg";
 import { type NewProductType } from "../type";
 import EmptyCard from "./EmptyCard";
+import carbonNeutralIcon from "../../public/assets/images/icon-carbon-neutral.svg";
+import { CustomButton } from "./CustomButton";
 
 type CardContainerProps = {
   products: NewProductType[];
@@ -12,6 +14,7 @@ export default function CardContainer({
   setProductsInCard,
 }: CardContainerProps) {
   let totalPrice = 0;
+  let totalCount = 0;
 
   const removeCardListItem = (name: string) => {
     setProductsInCard((prevState) => {
@@ -19,9 +22,15 @@ export default function CardContainer({
     });
   };
 
+  products.forEach((oneProduct) => {
+    totalCount += oneProduct.count;
+  });
+
   return (
     <aside className="sticky top-[20px] self-start w-full max-w-80 h-auto p-4 bg-boxColor rounded-2xl ">
-      <h2 className=" text-2xl font-bold text-redFontColor ">Your cart (0)</h2>
+      <h2 className=" text-2xl font-bold text-redFontColor ">
+        Your cart ({totalCount})
+      </h2>
       <div className="p-2">
         {products.length === 0 ? (
           <EmptyCard />
@@ -67,6 +76,14 @@ export default function CardContainer({
                 ${totalPrice.toFixed(2)}
               </span>
             </p>
+            <div className="flex gap-2 justify-center p-3 text-sm text-center bg-dispaearText rounded-md">
+              <img src={carbonNeutralIcon} alt="carbon_neutral" />
+              <p>
+                This is a <span className="font-semibold">carbon-neutral</span>{" "}
+                delivery
+              </p>
+            </div>
+            <CustomButton className="mt-4"> Confirm order </CustomButton>
           </>
         )}
       </div>
