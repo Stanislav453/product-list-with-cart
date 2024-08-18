@@ -4,6 +4,7 @@ export default {
     extend: {
       colors: {
         redFontColor: "hsl(14, 86%, 42%)",
+        dispaearText: "hsl(13, 31%, 94%)",
         darkRedColor: "hsl(14, 65%, 9%)",
         secondTextColor: "hsl(12, 20%, 44%)",
         boxColor: "hsl(20, 50%, 98%)",
