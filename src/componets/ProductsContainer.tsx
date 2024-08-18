@@ -29,8 +29,6 @@ export default function ProductsContainer({
 
   const productName = productsInCard?.map((item) => item.name);
 
-  console.log(productName);
-
   const handleCount = (productName: string, value: number) => {
     setProductsInCard((prevState) =>
       prevState
