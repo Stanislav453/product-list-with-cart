@@ -1,11 +1,11 @@
 import localData from "../data.json";
-import { useState } from "react";
+// import { useState } from "react";
 // import OneProduct from "./OneProduct";
 import addCart from "../../public/assets/images/icon-add-to-cart.svg";
 import increment from "../../public/assets/images/icon-increment-quantity.svg";
 import decrement from "../../public/assets/images/icon-decrement-quantity.svg";
 import { type DataType, NewProductType } from "../type";
-import OneProduct from "./OneProduct";
+// import OneProduct from "./OneProduct";
 
 type ProductsContainerProps = {
   productsInCard: NewProductType[];
@@ -42,11 +42,11 @@ export default function ProductsContainer({
   };
 
   return (
-    <article className="w-full max-w-screen-lg">
-      <h1 className="pb-2 text-[2rem] font-bold capitalize text-darkRedColor">
+    <main className="w-full max-w-4xl">
+      <h1 className="w-full  text-[2rem] font-bold capitalize text-darkRedColor">
         desserts
       </h1>
-      <ul className="flex flex-wrap gap-8">
+      <ul className="grid grid-cols-3 gap-8">
         {localData.map((oneProduct, index) => {
           const { name, category, price } = oneProduct;
           const { desktop } = oneProduct.image;
@@ -59,7 +59,7 @@ export default function ProductsContainer({
           );
 
           return (
-            <li className="max-w-[315px] flex flex-col gap-8" key={index}>
+            <li className="max-w-[270px] flex flex-col gap-4" key={index}>
               <div className="relative flex justify-center items-end">
                 <img src={desktop} alt="product" className="rounded-2xl" />
                 {isInCard ? (
@@ -105,6 +105,6 @@ export default function ProductsContainer({
           );
         })}
       </ul>
-    </article>
+    </main>
   );
 }
