@@ -58,7 +58,7 @@ export default function ProductsContainer({
           return (
             <li className="w-full sm:max-w-[270px] flex flex-col gap-8" key={index}>
               <div className="relative flex justify-center items-end">
-                <img src={desktop} alt="product" className="rounded-2xl" />
+                <img src={desktop} alt="product" className="w-full rounded-2xl" />
                 {isInCard ? (
                   <div className="absolute bottom-[-23px] flex justify-between items-center gap-2 w-full max-w-44  px-6 py-3 text-darkRedColor  bg-redFontColor  rounded-full transition-colors">
                     <button
@@ -72,7 +72,7 @@ export default function ProductsContainer({
                     </span>
                     <button
                       onClick={() => handleCount(name, -1)}
-                      className=" flex justify-center items-center w-5 h-5 border-[1px] border-white rounded-full hover:filter hover:bg-white "
+                      className=" flex justify-center items-center w-5 h-5 border-[1px] border-white rounded-full"
                     >
                       <img
                         className="invert-[0] sepia-100 saturate-[0] hue-rotate-[21deg] brightness-[.97] contrast-[1.03]"

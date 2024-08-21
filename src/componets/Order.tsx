@@ -66,7 +66,7 @@ export const Order = ({
             return (
               <li
                 key={index}
-                className="flex w-80 py-4 border-b-[1px] border-backgroundPageColor"
+                className="flex w-full sm:w-80 py-4 border-b-[1px] border-backgroundPageColor"
               >
                 <img
                   width="50"
@@ -75,7 +75,7 @@ export const Order = ({
                   src={thumbnail}
                   alt="one_product"
                 />
-                <p className="flex flex-col ml-4 justify-between">
+                <p className="flex flex-col ml-4 justify-between pr-4">
                   <h4 className="text-sm font-bold capitalize text-darkRedColor">
                     {name}
                   </h4>
