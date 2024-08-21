@@ -11,6 +11,15 @@ export default {
         backgroundPageColor: "hsl(14, 25%, 72%)",
         penetratingWhite: "hsl(7, 20%, 60%)",
       },
+      keyframes: {
+        "fade-in": {
+          "0%": { opacity: "0%" },
+          "100%": { opacity: "100%" },
+        },
+      },
+      animation: {
+        "fade-in": "fade-in 0.5s ease-in-out",
+      },
     },
   },
   plugins: [],
