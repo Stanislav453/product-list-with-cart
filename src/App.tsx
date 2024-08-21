@@ -7,7 +7,6 @@ import { Order } from "./componets/Order";
 export default function App() {
   const [productsInCard, setProductsInCard] = useState<NewProductType[]>([]);
   const [isOrderActive, setIsOrderActive] = useState(false);
-  console.log(isOrderActive);
 
   return (
     <section className="flex flex-col sm:flex-row justify-center gap-4 p-4 sm:p-20">
