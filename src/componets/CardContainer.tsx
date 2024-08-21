@@ -29,7 +29,7 @@ export default function CardContainer({
   });
 
   return (
-    <aside className="sticky top-[20px] self-start w-full max-w-80 h-auto p-4 bg-boxColor rounded-2xl ">
+    <aside className="sticky top-[20px] self-start w-full sm:max-w-80 h-auto p-4 bg-boxColor rounded-2xl ">
       <h2 className=" text-2xl font-bold text-redFontColor ">
         Your cart ({totalCount})
       </h2>

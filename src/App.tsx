@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import ProductsContainer from "./componets/ProductsContainer";
 import CardContainer from "./componets/CardContainer";
 import { NewProductType } from "./type";
@@ -10,10 +10,10 @@ export default function App() {
   console.log(isOrderActive);
 
   return (
-    <section className="flex flex-wrap justify-center gap-4 p-20">
+    <section className="flex flex-col sm:flex-row justify-center gap-4 p-4 sm:p-20">
       <ProductsContainer
         productsInCard={productsInCard}
-        setProductsInCard={setProductsInCard}
+        setProductsInCard={setProductsInCard} 
       />
 
       <CardContainer
