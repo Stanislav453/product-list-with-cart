@@ -5,11 +5,13 @@ import carbonNeutralIcon from "../../public/assets/images/icon-carbon-neutral.sv
 import { CustomButton } from "./CustomButton";
 
 type CardContainerProps = {
+  setIsOrderActive: React.Dispatch<React.SetStateAction<boolean>>;
   products: NewProductType[];
   setProductsInCard: React.Dispatch<React.SetStateAction<NewProductType[]>>;
 };
 
 export default function CardContainer({
+  setIsOrderActive,
   products,
   setProductsInCard,
 }: CardContainerProps) {
@@ -36,14 +38,14 @@ export default function CardContainer({
           <EmptyCard />
         ) : (
           <>
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col gap-4 max-h-80 overflow-y-auto">
               {products?.map((oneProduct: NewProductType, index: number) => {
                 const { name, price, count } = oneProduct;
                 const productTotalPrice = price * count;
                 totalPrice += productTotalPrice;
 
                 return (
-                  <li className="border-b-[1px] pb-4" key={index}>
+                  <li className="border-b-[1px] pb-4 px-1" key={index}>
                     <h2 className="text-black font-medium">{name}</h2>
                     <div className="flex justify-between">
                       <p>
@@ -83,7 +85,13 @@ export default function CardContainer({
                 delivery
               </p>
             </div>
-            <CustomButton className="mt-4"> Confirm order </CustomButton>
+            <CustomButton
+              onClick={() => setIsOrderActive(true)}
+              className="mt-4"
+            >
+              {" "}
+              Confirm order{" "}
+            </CustomButton>
           </>
         )}
       </div>
