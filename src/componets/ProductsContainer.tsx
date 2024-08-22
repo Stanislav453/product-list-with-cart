@@ -50,15 +50,25 @@ export default function ProductsContainer({
 
           const totalPrice = price.toFixed(2);
           const isInCard = productName.includes(name);
+          const imgActiveBorder = isInCard
+            ? "outline outline-2 outline-redFontColor"
+            : "";
 
           const actualProduct = productsInCard.find(
             (product) => product.name === name
           );
 
           return (
-            <li className="w-full sm:max-w-[270px] flex flex-col gap-8" key={index}>
+            <li
+              className="w-full sm:max-w-[270px] flex flex-col gap-8"
+              key={index}
+            >
               <div className="relative flex justify-center items-end">
-                <img src={desktop} alt="product" className="w-full rounded-2xl" />
+                <img
+                  src={desktop}
+                  alt="product"
+                  className={`w-full rounded-2xl ${imgActiveBorder}`}
+                />
                 {isInCard ? (
                   <div className="absolute bottom-[-23px] flex justify-between items-center gap-2 w-full max-w-44  px-6 py-3 text-darkRedColor  bg-redFontColor  rounded-full transition-colors">
                     <button
@@ -74,11 +84,7 @@ export default function ProductsContainer({
                       onClick={() => handleCount(name, -1)}
                       className=" flex justify-center items-center w-5 h-5 border-[1px] border-white rounded-full"
                     >
-                      <img
-                        className="invert-[0] sepia-100 saturate-[0] hue-rotate-[21deg] brightness-[.97] contrast-[1.03]"
-                        src={decrement}
-                        alt="decrement"
-                      />
+                      <img src={decrement} alt="decrement" />
                     </button>
                   </div>
                 ) : (
