@@ -81,7 +81,7 @@ export default function CardContainer({
             <div className="flex gap-2 justify-center p-3 text-sm text-center bg-dispaearText rounded-md">
               <img src={carbonNeutralIcon} alt="carbon_neutral" />
               <p>
-                This is a <span className="font-semibold">carbon-neutral</span>{" "}
+                This is a <span className="font-semibold">carbon-neutral</span>
                 delivery
               </p>
             </div>
@@ -89,8 +89,7 @@ export default function CardContainer({
               onClick={() => setIsOrderActive(true)}
               className="mt-4"
             >
-              {" "}
-              Confirm order{" "}
+              Confirm order
             </CustomButton>
           </>
         )}
