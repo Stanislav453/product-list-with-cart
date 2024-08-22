@@ -32,6 +32,12 @@ export const Order = ({
     }
   };
 
+  const handleCLoseOrder = (e?: KeyboardEvent) => {
+    if (e?.key === "Escape") {
+      setIsOrderActive(false);
+    }
+  };
+
   const handleNewOrder = () => {
     setIsOrderActive(false);
     setProductsInCard([]);
@@ -39,6 +45,7 @@ export const Order = ({
 
   useEffect(() => {
     toggleDialog();
+    window.addEventListener("keydown", handleCLoseOrder);
   }, [isOrderActive]);
   return (
     <dialog
