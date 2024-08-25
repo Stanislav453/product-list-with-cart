@@ -16,17 +16,17 @@ export default function CardContainer({
   setProductsInCard,
 }: CardContainerProps) {
   let totalPrice = 0;
-  let totalCount = 0;
+
+  const totalCount = products.reduce(
+    (count, product) => count + product.count,
+    0
+  );
 
   const removeCardListItem = (name: string) => {
     setProductsInCard((prevState) => {
       return prevState.filter((oneProduct) => oneProduct.name !== name);
     });
   };
-
-  products.forEach((oneProduct) => {
-    totalCount += oneProduct.count;
-  });
 
   return (
     <aside className="sticky top-[20px] self-start w-full sm:max-w-80 h-auto p-4 bg-boxColor rounded-2xl ">
